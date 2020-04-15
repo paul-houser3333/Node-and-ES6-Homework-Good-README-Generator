@@ -6,10 +6,7 @@ const fs = require ("fs");
 
 const axios = require ("axios");
 
-//const generateMarkdown = require("./generateMarkdown")
 
-//asynch write file will render returned axios call & inquirer answered questions 
-//const writeFile = utli.promisify(fs.writeFile)
 
 
 //array of prompts to be answered by user
@@ -26,7 +23,7 @@ inquirer.prompt([
 },
 {
     type: "input", 
-    name : "description ",
+    name : "description",
     message : "Enter description of project"
 },
 {
@@ -49,21 +46,31 @@ inquirer.prompt([
 .then (function(data){
      //console.log (data.userName)
 
-    const gitData = {
-        userName: username,
-        gitPage: data.html_url,
-        validName: data.name,
-        profilePic: data.avatar_url,
-        gitURL: data.html_url 
-    };
 
+
+    
     // axios call
 
- axios.get("https://api.github.com/users/" + gitData)
+ axios.get("https://api.github.com/users/" + data.userName)
 
  .then (function(response){
-    //console.log (response.data.avatar_url)
-    //console.log (data.email)
+    
+
+    let title = data.title
+    let avatar = response.data.avatar_url
+    let email = response.data.email
+    let license = data.license
+    let description = data.description
+    let installatiion = data.installatiion
+    let insstructions = data.insstructions
+fs.writeFile('readMe2.md',title + '\n' + license + '\n' + description + '\n' + installatiion + '\n' + insstructions +  '\n' + email + '\n' + avatar,  function(){
+
+})
+
+
+
+
+
 
     //.md file
 
