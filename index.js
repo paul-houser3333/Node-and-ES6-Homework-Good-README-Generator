@@ -59,16 +59,16 @@ inquirer.prompt([
 
 
 ]) 
+
+// function to run the data
 .then (function(data){
-     //console.log (data.userName)
-
-
-
     
-    // axios call
+// axios/api call
 
  axios.get("https://api.github.com/users/" + data.userName)
 
+ //variables in the fs write file function
+ 
  .then (function(response){
     let email = data.email
     let test = data.test
@@ -82,6 +82,7 @@ inquirer.prompt([
     let insstructions = data.insstructions
     let contributing = data.contributing
     
+// Wright to the readMe2 file
 
 fs.writeFile('readMe2.md',title + '\n' + email + '\n'  + license + '\n' + description + '\n' + installatiion + '\n' + insstructions +  '\n' + email  + '\n' + usage + '\n' + contributing + '\n' + test + '\n' + avatar,  function(){
 
