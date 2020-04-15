@@ -38,9 +38,21 @@ inquirer.prompt([
 },
 {
     type: "input", 
-    name : "insstructions",
-    message : "Please enter insstructions need to run project"
+    name : "usage",
+    message : "Please provide detailed ex. how a user would opperate the app"
 }
+{
+    type: "input", 
+    name : "contributing",
+    message : "If one may contribute, what are the procedures to do so?"
+}
+{
+    type: "input", 
+    name : "test",
+    message : "What test have been implemted?"
+}
+
+
 
 ]) 
 .then (function(data){
@@ -54,8 +66,8 @@ inquirer.prompt([
  axios.get("https://api.github.com/users/" + data.userName)
 
  .then (function(response){
-    
-
+    let test = data.test
+    let usage = data.usage
     let title = data.title
     let avatar = response.data.avatar_url
     let email = response.data.email
@@ -63,7 +75,10 @@ inquirer.prompt([
     let description = data.description
     let installatiion = data.installatiion
     let insstructions = data.insstructions
-fs.writeFile('readMe2.md',title + '\n' + license + '\n' + description + '\n' + installatiion + '\n' + insstructions +  '\n' + email + '\n' + avatar,  function(){
+    let contributing = data.contributing
+    
+
+fs.writeFile('readMe2.md',title + '\n' + license + '\n' + description + '\n' + installatiion + '\n' + insstructions +  '\n' + email  + '\n' + usage + '\n' + contributing + '\n' + test + '\n' + avatar,  function(){
 
 })
 
