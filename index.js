@@ -70,21 +70,23 @@ inquirer.prompt([
  //variables in the fs write file function
  
  .then (function(response){
-    let email = data.email
-    let test = data.test
-    let usage = data.usage
-    let title = data.title
-    let avatar = response.data.avatar_url
-    let email = response.data.email
-    let license = data.license
-    let description = data.description
-    let installatiion = data.installatiion
-    let insstructions = data.insstructions
-    let contributing = data.contributing
     
+    let test = `# ${data.test}`
+    let usage = `# ${data.usage}`
+    let title = `# ${data.title}`
+    let avatar = `![avatar](${response.data.avatar_url})`
+    let email = response.data.email
+    let license = `# ${data.license}`
+    let description =`# ${data.description}`
+    let installatiion = `# ${data.installatiion}`
+    let instructions = `# ${data.instructions}`
+    let contributing = `# ${data.contributing}`
+
+    let makeReadMe = `${title}\n${email}\n${license}\n${description}\n${installatiion}\n${instructions}\n
+    ${usage}\n${contributing}\n${test}\n${avatar}`
 // Wright to the readMe2 file
 
-fs.writeFile('readMe2.md',title + '\n' + email + '\n'  + license + '\n' + description + '\n' + installatiion + '\n' + insstructions +  '\n' + email  + '\n' + usage + '\n' + contributing + '\n' + test + '\n' + avatar,  function(){
+fs.writeFile('readMe2.md', makeReadMe,function(){
 
 })
 
@@ -93,8 +95,7 @@ fs.writeFile('readMe2.md',title + '\n' + email + '\n'  + license + '\n' + descri
 
 
 
-    //.md file
-
+   
 
 
  })
