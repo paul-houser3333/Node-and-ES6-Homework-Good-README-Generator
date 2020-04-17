@@ -56,6 +56,11 @@ inquirer.prompt([
     name : "email",
     message : "Please enter your email"
 },
+{
+    type: "input", 
+    name : "instructions",
+    message : "Please enter your detailed information for the app to be utlized"
+},
 
 
 ]) 
@@ -82,7 +87,8 @@ inquirer.prompt([
     let instructions = `# ${data.instructions}`
     let contributing = `# ${data.contributing}`
 
-    let makeReadMe = `${title}\n${email}\n${license}\n${description}\n${installatiion}\n${instructions}\n
+    let userName = data.userName
+    let makeReadMe = `${title}\n${userName}\n${email}\n${license}\n${description}\n${installatiion}\n${instructions}\n
     ${usage}\n${contributing}\n${test}\n${avatar}`
 // Wright to the readMe2 file
 
